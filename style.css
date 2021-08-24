@@ -147,7 +147,7 @@ body
 /* form */
 
 /* Style inputs with type="text", select elements and textareas */
-input[type=text] ,textarea {
+input[type=text] ,input[type=tel], textarea {
 	width: 100%; /* Full width */
 	padding: 12px; /* Some padding */ 
 	color: #54075f;
@@ -172,7 +172,7 @@ input[type=text] ,textarea {
   
 
   /* Adding Error COntrol */
-  .has-error{
+  .has-error, input[type = "tel"]:out-of-range{
 	border: 1px solid #ce0000 !important;
   }
   
