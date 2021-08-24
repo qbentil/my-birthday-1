@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php
+        require "./class.php";
+        $snippet = new Snippet();
+
+    ?>
     <footer> <a href="javascript:;" class="trigger">Add your message to My Wishes Book💖!</a></footer>
     
     <div class="card">
@@ -51,7 +56,7 @@
         </div>
     </div> -->
 
-  <?php require_once "addwish.php" ?>
+  <?php echo $snippet->get_formbook() ?>
   <footer>&copy; <a href="http://qbentil.netlify.com" target="_blank" rel="noopener noreferrer">Themanbentil</a> Made it💖!</footer>
   <script src="app.js"></script>
   </body>
