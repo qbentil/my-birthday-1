@@ -1,7 +1,7 @@
     const modal = document.querySelector(".modal");
     const trigger = document.querySelector(".trigger");
     const closeButton = document.querySelector(".close-button");
-    const form_inputs = document.getElementsByClassName("form-group");
+    const form_inputs = $(".form-group");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -44,8 +44,8 @@ document.getElementById('send').addEventListener("click", function(e)
             form_inputs[i].classList.add("has-error")
             
         }else if(form_inputs[i].getAttribute('id') == 'phone' && !validate_phone(form_inputs[i].value)){
-            flag = true;
             form_inputs[i].classList.add("has-error") 
+            flag = true
         }else{
             flag = false;
             form_inputs[i].classList.remove("has-error");
@@ -54,9 +54,8 @@ document.getElementById('send').addEventListener("click", function(e)
     }
     if(!flag)
     {
-        alert('Ready to Subvmit Form')
-    }else{
-        alert("One or more fields has error")
+        var formData = $('#wish-book').serializeArray();
+        console.log(formData);
     }
     
 })
