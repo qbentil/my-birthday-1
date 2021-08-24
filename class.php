@@ -23,7 +23,6 @@ class Snippet
             <div class='front'>
                 <div class='imgset'>
                     <img width='100%' src='./img/$img'>
-                    <span class 'numbering'>1</span>
                 </div>
             </div>
             <div class='text-container'>

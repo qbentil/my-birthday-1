@@ -14,14 +14,17 @@
 
     ?>
     <footer> <a href="javascript:;" class="trigger">Add your message to My Wishes Book💖!</a></footer>
-    </div> -->
+    </div>
     <?php
-        $snippet->get_card("Happy Birthday Bentil","I hope your special day will bring you lots of happiness, love, and fun. You deserve them a lot. Enjoy your day for me!", "John Doe", "happy.jpg" )
+        $snippet->get_card("Happy Birthday Bentil","I hope your special day will bring you lots of happiness, love, and fun. You deserve them a lot. Enjoy your day for me!", "Alexandra Doe", "happy.jpg" )
     ?>
 
   <?php echo $snippet->get_formbook() ?>
   <footer>&copy; <a href="http://qbentil.netlify.com" target="_blank" rel="noopener noreferrer">Themanbentil</a> Made it💖!</footer>
-  <script src="app.js"></script>
+
+  <!-- jquery -->
+  <script src="./js/jquery.js"></script>
+  <script src="./js/app.js"></script>
   </body>
 </body>
 </html>
