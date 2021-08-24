@@ -15,8 +15,8 @@
               <!-- <label for="lname">Hyped Wish</label> -->
               <input type="text" id="subject" class="form-group" name="subject" placeholder="Message Title: Glorous Birthday to you Bentil">
 
-              <!-- <label for="subject">Wish Message</label> -->
-              <textarea id="subject" class="form-group" name="message" placeholder="Write something for Bentil💻🥰" style="height:200px"></textarea>
+              <label for="subject"><Small><b>Maximum: 45 Words:  </b><i> <span id="lcount">45</span> Words remaining</i></Small></label>
+              <textarea id="message" class="form-group" name="message" placeholder="Write something for Bentil💻🥰 [Max: 225 Letters]" style="height:200px" maxlength="225"></textarea>
 
               <input type="submit" id="send" value="Submit">
 
