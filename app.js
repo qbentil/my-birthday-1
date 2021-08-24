@@ -1,6 +1,7 @@
     const modal = document.querySelector(".modal");
     const trigger = document.querySelector(".trigger");
     const closeButton = document.querySelector(".close-button");
+    const form_inputs = document.getElementsByClassName("form-group");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -17,12 +18,25 @@ closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 
+// Word Count Function
+form_inputs[3].addEventListener("keyup", function()
+{
+    var max = 45, current = form_inputs[3].value;
+    document.getElementById("lcount").innerHTML = max - countWords(current);
+})
+
+
+function countWords(str) {
+    return str.trim().split(/\s+/).length;
+}
+// Word Count Function
+
+
 // const send = document.getElementById('send');
 document.getElementById('send').addEventListener("click", function(e)
 {
     e.preventDefault();
     var flag = false; // Error handler
-    var form_inputs = document.getElementsByClassName("form-group");
     for (let i = 0; i < form_inputs.length; i++) {
         if(form_inputs[i].value == null | form_inputs[i].value.length == 0)
         {
