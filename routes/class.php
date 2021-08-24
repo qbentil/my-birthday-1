@@ -12,7 +12,7 @@ class Snippet
 
     public function get_formbook()
     {
-        require_once "./addwish.php";
+        require_once "addwish.php";
     }
 
     public function get_card($title, $message, $sender, $img = "front.jpg")
