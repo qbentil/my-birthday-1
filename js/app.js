@@ -55,7 +55,14 @@ document.getElementById('send').addEventListener("click", function(e)
     if(!flag)
     {
         var formData = $('#wish-book').serializeArray();
-        console.log(formData);
+         var url		=	"./routes/services.php";
+        $.ajax({
+            url: url,
+            method: 'POST',
+            data: formData +'&action=send_wish',        
+        }).done(function(result){
+            console.log(result);    
+        })
     }
     
 })

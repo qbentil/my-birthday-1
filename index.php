@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-        require "./class.php";
+        require "./routes/class.php";
         $snippet = new Snippet();
 
     ?>
