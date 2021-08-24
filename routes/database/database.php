@@ -9,7 +9,7 @@ class Database
 	
 	public function connect(){
         
-		$this->con = new Mysqli("Localhost","root","","Minash");
+		$this->con = new Mysqli("Localhost","root","","birthday");
 		if ($this->con) {
 			return $this->con;
 			// return "DATABASE_CONNECTED";
