@@ -17,7 +17,6 @@ trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
-
 // Word Count Function
 form_inputs[3].addEventListener("keyup", function()
 {
@@ -52,11 +51,12 @@ document.getElementById('send').addEventListener("click", function(e)
         }
         
     }
+    // console.log(flag);
     if(!flag)
     {
-        var response = '<div class="alert alert-warning alert-dismissable">Subscribing... </div>';
+        var response = '<div class="alert alert-warning alert-dismissable">Creating wish book..... </div>';
         
-        $('#wish-book .ajax-message').html(response);
+        $('#wish-book .ajax-response').html(response).show('slow');
         var formData = $('#wish-book').serialize();
          var url		=	"./routes/services.php";
         $.ajax({
@@ -64,16 +64,17 @@ document.getElementById('send').addEventListener("click", function(e)
             method: 'POST',
             data: formData +'&action=send_wish',        
         }).done(function(result){
-            // console.log(result);   
+            console.log(result);   
+            // return;
             var data = JSON.parse(result)
             if(data.status == 1){
                 response = '<div class="alert alert-success">'+data.message+'</div>';
-                $("#wish-book").reset();
-                // toggleModal();
             }else{
                 response = '<div class="alert alert-danger">'+data.message+'</div>';
+                $("#wish-book").reset();
+                toggleModal();
             }
-            $('#wish-book .ajax-message').html(response).delay(5000).hide('slow'); 
+            $('#wish-book .ajax-response').html(response).delay(5000).hide('slow'); 
         })
     }
     
