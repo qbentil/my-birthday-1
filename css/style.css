@@ -207,3 +207,31 @@ footer a{
     text-decoration: none;
     color: inherit;
 }
+
+/* AJAX RESPONSE */
+.ajax-response{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}
+.ajax-response .alert{
+	align-items: center;
+	text-align: center;
+	font-weight: bold;
+	width: 95%;
+	padding: 5px;
+	border-radius: 4px;
+}
+.ajax-response .alert.alert-warning{
+	background-color: #ce000062 ;
+	color: #ce0000 ;
+}
+.ajax-response .alert.alert-success{
+	background-color: #bd46c1 ;
+	color: #3b0142 ;
+}
+.hidden{
+	display: none;
+}

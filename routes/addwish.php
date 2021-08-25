@@ -5,9 +5,9 @@
             <div class="container">
               <div class="ajax-message"></div>
             <form id="wish-book" method="POST" autocomplete="off">
-
+              <div class="ajax-response"></div>
               <!-- <label for="fname">Your name</label> -->
-              <input type="text" id="name"  class="form-group" name="name" placeholder="Enter your name">
+              <input type="text" id="name"  class="form-group" name="name" placeholder="Enter your name" autofocus>
 
               <!-- <label for="fname">Your Phone</label> -->
               <input type="tel" id="phone"  class="form-group" name="phone"  placeholder="Enter your phone number">
