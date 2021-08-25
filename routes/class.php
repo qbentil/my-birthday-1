@@ -5,32 +5,61 @@
 */
 class Snippet
 {
-    // function __construct()
-    // {
-    //     require_once './addwish.php';
-    // }
+    function __construct()
+    {
+        require_once 'processor.php';
+    }
 
     public function get_formbook()
     {
         require_once "addwish.php";
     }
 
-    public function get_card($title, $message, $sender, $img = "front.jpg")
+    public function get_cards($img = "front.jpg")
     {
-        echo "
-        <div class='card'>
-            <div class='back'></div>
-            <div class='front'>
+        $rows = $this->card_data();
+        if($rows != 'NO_DATA')
+        {
+            foreach ($rows as $data) {
+                echo "
+                <div class='card'>
+                    <div class='back'></div>
+                    <div class='front'>
+                        <div class='imgset'>
+                            <img width='100%' src='./img/$img'>
+                        </div>
+                    </div>
+                    <div class='text-container'>
+                    <p id='head'>".$data['title']."</p>
+                    <p>".$data['message']."</p>
+                    <p class 'sender'>~".$data['name']."</p>
+                    </div>
+                </div>";
+            }
+        }else{
+            echo "
+            <div class='card'>
+                <div class='back'></div>
+                <div class='front'>
                 <div class='imgset'>
-                    <img width='100%' src='./img/$img'>
+                    <img width='100%' src='./img/front.jpg'>
+                    </div>
                 </div>
+                <div class='text-container'>
+                    <p id='head'>Themanbentil💻</p>
+                    <p>Happy Birthday to myself!🎊🎉🎵🏆</p>
+                    <p>~qBentil</p>
+                    </div>
             </div>
-            <div class='text-container'>
-            <p id='head'>$title</p>
-            <p>$message</p>
-            <p class 'sender'>~$sender</p>
-            </div>
-        </div>";
+            
+            ";
+        }
+    }
+
+    public function card_data()
+    {
+        $processor = new Processor();
+        return $processor->get_card_data();
     }
 }
 

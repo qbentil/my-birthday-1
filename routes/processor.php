@@ -2,16 +2,16 @@
 
 class Processor{
     private $con;
-    public function __construct()
+    public function __construct($path = "./routes/")
     {
 
-        include_once("./database/database.php");
+        include_once($path."database/database.php");
         $db = new Database();
         $this->con = $db->connect();
     }
-    protected function exists( $val)
+    protected function exists($col, $val)
 	{
-		$pre_stmt = $this->con->prepare("SELECT * FROM `users` WHERE `phone` = ? LIMIT 1");
+		$pre_stmt = $this->con->prepare("SELECT * FROM `users` WHERE `$col` = ? LIMIT 1");
 		$pre_stmt->bind_param("s",$val);
 		$pre_stmt->execute() or die($this->con->error);
 		$result = $pre_stmt->get_result();
@@ -26,17 +26,16 @@ class Processor{
 
     public function send_wish($name, $phone, $subject, $message)
     {
-
-        if(!$this->exists($phone))
+		$ip = $this->getUserIP();
+        if(!$this->exists('phone',$phone)) //&& !$this->exists('ip',$ip) {Production mode}
         {
             $tb = "users";
-			$ip = $this->getUserIP();
             $stmt = "INSERT INTO `$tb`(`name`, `phone`, `ip`) VALUES (?,?,?)";
             $pre_stmt = $this->con->prepare($stmt);
             $pre_stmt->bind_param("sss", $name,$phone, $ip);
             $result = $pre_stmt->execute() or die($this->con->error);
 			
-			return $result? $this->insert_wish($subject, $message, $this->con->insert_id): "INSERTING_USER_FAILED";
+			return $result? $this->insert_wish($subject, $message, $this->con->insert_id): 0;
         }
         return 0;
     }
@@ -48,12 +47,27 @@ class Processor{
 		$pre_stmt = $this->con->prepare($stmt);
 		$pre_stmt->bind_param("iss", $uid,$title, $msg);
 		$result = $pre_stmt->execute() or die($this->con->error);
-		return $result?  1:"INSERTING_WISH_FAILED";
+		return $result?  1:0;
 	}
 
     public function get_data($tb, $rule=NULL) // get all records in a table
 	{
 		$stmt = "SELECT * FROM `$tb` $rule";
+		$pre_stmt = $this->con->prepare($stmt);
+		$pre_stmt->execute() or die($this->con->error);
+		$result = $pre_stmt->get_result();
+		$rows = array();
+		if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()){
+				$rows[] = $row;
+			}
+			return $rows;
+		}
+		return "NO_DATA";
+	}
+	public function get_card_data()
+	{
+		$stmt = "SELECT w.title, w.message, u.name FROM `wishes` w, `users` u WHERE w.uid = u.id ORDER BY w.date DESC";
 		$pre_stmt = $this->con->prepare($stmt);
 		$pre_stmt->execute() or die($this->con->error);
 		$result = $pre_stmt->get_result();
@@ -94,7 +108,7 @@ class Processor{
 	}
 }
 
-$op = new Processor();
-// echo $op->send_wish("Bentil Shadrack", '0556844331', "Happy Birthday Ben", "Testing from Backend!!!!");
-echo "<pre>";
-print_r($op->get_data('users'));
+// $op = new Processor();
+// // echo $op->send_wish("Bentil Shadrack", '0556844331', "Happy Birthday Ben", "Testing from Backend!!!!");
+// echo "<pre>";
+// print_r($op->get_data('users'));
