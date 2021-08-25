@@ -108,7 +108,3 @@ class Processor{
 	}
 }
 
-// $op = new Processor();
-// // echo $op->send_wish("Bentil Shadrack", '0556844331', "Happy Birthday Ben", "Testing from Backend!!!!");
-// echo "<pre>";
-// print_r($op->get_data('users'));
