@@ -2,6 +2,14 @@
     const trigger = document.querySelector(".trigger");
     const closeButton = document.querySelector(".close-button");
     const form_inputs = $(".form-group");
+    function delay(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+          end = new Date().getTime();
+       }
+     }
+
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
@@ -71,10 +79,12 @@ document.getElementById('send').addEventListener("click", function(e)
                 response = '<div class="alert alert-success">'+data.message+'</div>';
             }else{
                 response = '<div class="alert alert-danger">'+data.message+'</div>';
-                $("#wish-book").reset();
-                toggleModal();
+                // $("#wish-book").reset();
+                // toggleModal();
             }
             $('#wish-book .ajax-response').html(response).delay(5000).hide('slow'); 
+            delay(10000)
+            window.location.reload();
         })
     }
     
