@@ -54,14 +54,26 @@ document.getElementById('send').addEventListener("click", function(e)
     }
     if(!flag)
     {
-        var formData = $('#wish-book').serializeArray();
+        var response = '<div class="alert alert-warning alert-dismissable">Subscribing... </div>';
+        
+        $('#wish-book .ajax-message').html(response);
+        var formData = $('#wish-book').serialize();
          var url		=	"./routes/services.php";
         $.ajax({
             url: url,
             method: 'POST',
             data: formData +'&action=send_wish',        
         }).done(function(result){
-            console.log(result);    
+            // console.log(result);   
+            var data = JSON.parse(result)
+            if(data.status == 1){
+                response = '<div class="alert alert-success">'+data.message+'</div>';
+                $("#wish-book").reset();
+                // toggleModal();
+            }else{
+                response = '<div class="alert alert-danger">'+data.message+'</div>';
+            }
+            $('#wish-book .ajax-message').html(response).delay(5000).hide('slow'); 
         })
     }
     
