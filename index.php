@@ -13,10 +13,10 @@
         $snippet = new Snippet();
 
     ?>
-    <footer> <a href="javascript:;" class="trigger">Add your message to My Wishes Book💖!</a></footer>
+    <footer> <a href="javascript:;" class="trigger">Add your message to My Wishes Book &#x2295;</a></footer>
     </div>
     <?php
-        $snippet->get_card("Happy Birthday Bentil","I hope your special day will bring you lots of happiness, love, and fun. You deserve them a lot. Enjoy your day for me!", "Alexandra Doe", "happy.jpg" )
+        $snippet->get_cards("happy.jpg" )
     ?>
 
   <?php echo $snippet->get_formbook() ?>
