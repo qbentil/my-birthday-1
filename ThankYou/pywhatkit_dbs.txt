@@ -1,0 +1,36 @@
+--------------------
+Date: 25:8:2021
+Time: 18:21
+Phone number: +233************
+Message: I Testing Python Broadcast!
+--------------------
+Date: 25:8:2021
+Time: 5:8
+Phone number: +233************
+Message: I Testing Python Broadcast!
+--------------------
+Date: 25:8:2021
+Time: 15:9
+Phone number: +233************
+Message: I Testing Python Broadcast!
+--------------------
+Date: 25:8:2021
+Time: 15:11
+Phone number: +233************
+Message: I Testing Python Brdfffffoadcast!
+--------------------
+Date: 25:8:2021
+Time: 15:11
+Phone number: +233************
+Message: I Testing Python Brdfffffoadcast!
+--------------------
+Date: 25:8:2021
+Time: 15:22
+Phone number: +233********
+Message: Hello Alex I am testing from my python Code. Relax hahahahahah
+--------------------
+Date: 25:8:2021
+Time: 15:22
+Phone number: +233***********
+Message: Hello Kelvin I am testing from my python Code. Relax hahahahahah
+--------------------
