@@ -83,7 +83,8 @@ document.getElementById('send').addEventListener("click", function(e)
                 // toggleModal();
             }
             $('#wish-book .ajax-response').html(response).delay(5000).hide('slow'); 
-            delay(10000)
+            
+            delay(10000) // Wait for user to read message before refreshing page.
             window.location.reload();
         })
     }
