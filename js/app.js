@@ -10,11 +10,9 @@
        }
      }
 
-
     function toggleModal() {
         modal.classList.toggle("show-modal");
     }
-
     function windowOnClick(event) {
         if (event.target === modal) {
             toggleModal();
@@ -25,7 +23,7 @@ trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
-// Word Count Function
+// Word-Count: Displaying word count
 form_inputs[3].addEventListener("keyup", function()
 {
     var max = 45, current = form_inputs[3].value;
@@ -33,13 +31,11 @@ form_inputs[3].addEventListener("keyup", function()
 })
 
 
+// Word Count Function
 function countWords(str) {
     return str.trim().split(/\s+/).length;
 }
-// Word Count Function
 
-
-// const send = document.getElementById('send');
 document.getElementById('send').addEventListener("click", function(e)
 {
     e.preventDefault();
@@ -59,7 +55,6 @@ document.getElementById('send').addEventListener("click", function(e)
         }
         
     }
-    // console.log(flag);
     if(!flag)
     {
         var response = '<div class="alert alert-warning alert-dismissable">Creating wish book..... </div>';
@@ -79,13 +74,11 @@ document.getElementById('send').addEventListener("click", function(e)
                 response = '<div class="alert alert-success">'+data.message+'</div>';
             }else{
                 response = '<div class="alert alert-danger">'+data.message+'</div>';
-                // $("#wish-book").reset();
-                // toggleModal();
             }
             $('#wish-book .ajax-response').html(response).delay(5000).hide('slow'); 
             
             delay(10000) // Wait for user to read message before refreshing page.
-            window.location.reload();
+            window.location.reload(); //Rewfreshing page to Update Cards
         })
     }
     
@@ -94,7 +87,7 @@ document.getElementById('send').addEventListener("click", function(e)
 
 function validate_phone(phone)
 {
-    let regx = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
+    let regx = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g; //|REGEX
     if(phone.match(regx) && phone.length >= 10)
     {
         return true;
