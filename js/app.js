@@ -70,6 +70,7 @@ document.getElementById('send').addEventListener("click", function(e)
             console.log(result);   
             // return;
             var data = JSON.parse(result)
+            console.log(data);
             if(data.status == 1){
                 response = '<div class="alert alert-success">'+data.message+'</div>';
             }else{

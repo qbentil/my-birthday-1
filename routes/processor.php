@@ -43,9 +43,10 @@ class Processor{
 	private function insert_wish($title, $msg, $uid)
 	{
 		$tb = "wishes";
-		$stmt = "INSERT INTO `$tb`(`uid`,`title`, `message`) VALUES (?,?,?)";
+		$stmt = "INSERT INTO `$tb`(`uid`,`title`, `message`, `date`) VALUES (?,?,?,?)";
+		$date = date("Y-m-d h:i:s");
 		$pre_stmt = $this->con->prepare($stmt);
-		$pre_stmt->bind_param("iss", $uid,$title, $msg);
+		$pre_stmt->bind_param("isss", $uid,$title, $msg, $date);
 		$result = $pre_stmt->execute() or die($this->con->error);
 		return $result?  1:0;
 	}
@@ -67,7 +68,7 @@ class Processor{
 	}
 	public function get_card_data()
 	{
-		$stmt = "SELECT w.title, w.message, u.name FROM `wishes` w, `users` u WHERE w.uid = u.id ORDER BY w.date DESC";
+		$stmt = "SELECT w.title, w.message, u.name, w.date FROM `wishes` w, `users` u WHERE w.uid = u.id ORDER BY w.date DESC";
 		$pre_stmt = $this->con->prepare($stmt);
 		$pre_stmt->execute() or die($this->con->error);
 		$result = $pre_stmt->get_result();

@@ -33,6 +33,7 @@ class Snippet
                     <p id='head'>".$data['title']."</p>
                     <p>".$data['message']."</p>
                     <p class 'sender'>~".$data['name']."</p>
+                    <p class 'sender' style='font-size: 12px'>".date('h:i A', strtotime($data['date']))."</p>
                     </div>
                 </div>";
             }
