@@ -9,3 +9,7 @@ Made In PHP and MySQL, JavaScript, HTML & CSS
 ## FILE SETUP AND CONFIGURATION
 <!-- Will Be Giving a proper documentations of the whole APP Here soon🥰 -->
 <!-- Thank you. -->
+
+## PROGRAM INTERFACE
+![image](https://user-images.githubusercontent.com/55560024/136106974-2625fbf1-1cfa-4e49-8ce9-821a83f784fe.png)
+
