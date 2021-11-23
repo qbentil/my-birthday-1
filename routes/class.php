@@ -15,7 +15,7 @@ class Snippet
         require_once "addwish.php";
     }
 
-    public function get_cards($img = "front.jpg")
+    public function get_cards($img = "b1.jpeg")
     {
         $rows = $this->card_data();
         if($rows != 'NO_DATA')
@@ -43,7 +43,7 @@ class Snippet
                 <div class='back'></div>
                 <div class='front'>
                 <div class='imgset'>
-                    <img width='100%' src='./img/front.jpg'>
+                    <img width='100%' src='./img/b1.jpeg'>
                     </div>
                 </div>
                 <div class='text-container'>
