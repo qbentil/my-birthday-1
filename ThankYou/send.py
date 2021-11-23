@@ -1,22 +1,48 @@
-import pywhatkit as kit
+
+from twilio.rest import Client
+from twilio.base.exceptions import TwilioRestException
+import mysql.connector as db
+from mysql.connector import Error
+
+try:
+    connection =db.connect(host='localhost',database='birthday',user='root',password='')
+    if connection.is_connected():
+        cursor = connection.cursor()
+        cursor.execute("select name, phone from users")
+        users = cursor.fetchall()  #get all wishers
+
+except Error as e:
+    print("Error while connecting to MySQL", e)
+finally:
+    if connection.is_connected():
+        cursor.close()
+        connection.close()
 
 
-# kit.sendwhatmsg("+233541014239", "I Testing Python Brdfffffoadcast!", 15,11)
 
-names = ['Alex', 'Kelvin', 'Ricky']
-phones = ['+233******', '+233********', '+233*******']
-dictionary = dict(zip(names, phones))
+# Your Account SID from twilio.com/console
+account_sid = "AC0de154fa6be756023bd0eed0ba55c266"
+# Your Auth Token from twilio.com/console
+auth_token  = "3a20ecc93e8ad2bfc13ad879c0844522"
 
-for name, phone in dictionary.items():
-    kit.sendwhatmsg(phone, "Hello "+name+" I am testing from my python Code. Relax hahahahahah", 15,22)
+client = Client(account_sid, auth_token)
 
+# for user in users:
+#     print(user[1])
+#     message = client.messages.create(
+#         to=user[1], 
+#         from_="+17174233449",
+#         body="Hello! "+ user[0]+ ", Bentil Here🥰! Thank you for making my Birthday a memorable one. God bless you for your time, prayer, wishes and gifts. I Love you🥰🥰")
 
-# sendwhatmsg() takes 4 parameters
-# 1. Reciepient phone number with country code
-# 2. Message 
-# 3. Time in hours (It makes use of the 24 hour)
-# 4. Time in Minutes
+#     print(message.sid)
+user = "Themanbentil"
+try:
+    message = client.messages.create(
+        to="+233547363882", 
+        from_="+17174233449",
+        body="Hello! "+ user+ ", Bentil Here🥰! Thank you for making my Birthday a memorable one. God bless you for your time, prayer, wishes and gifts. I Love you🥰🥰")
 
-
-
-# HINT: THE FOR LOOP DOESN'T WORK AS IT SHOULD FOR NOW
+    print(message.sid)
+except TwilioRestException as err:
+  # Implement your fallback code here
+  print(err)

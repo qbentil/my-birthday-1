@@ -5,10 +5,8 @@ try:
     connection =db.connect(host='localhost',database='birthday',user='root',password='')
     if connection.is_connected():
         cursor = connection.cursor()
-        cursor.execute("select * from users")
+        cursor.execute("select name, phone from users")
         users = cursor.fetchall()  #get all wishers
-        cursor.execute("select wishes.title from wishes")
-        titles = cursor.fetchall()
 
 except Error as e:
     print("Error while connecting to MySQL", e)
@@ -19,6 +17,7 @@ finally:
 
 
 for user in users:
-    print(user)
-for title in titles:
-    print(title)
+    print(user[0], user[1])
+
+# for phone in phones:
+#     print(phone)
